@@ -1,0 +1,4 @@
+Source to the sprites:
+
+Will (22. June 2019) Perfectly Recreating Flappy Bird in HTML5.  Downloaded 5. December 2019 from:
+https://forum.playcanvas.com/t/perfectly-recreating-flappy-bird-in-html5/10195
