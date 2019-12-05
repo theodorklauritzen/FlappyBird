@@ -1,7 +1,7 @@
 import pygame
 import components as cmp
 
-SCREEN_DIMENSIONS = (500, 800)
+SCREEN_DIMENSIONS = (500, 700)
 
 # The main function for the flow of the program
 def main():
@@ -27,7 +27,7 @@ def loop(window):
             if (event.type == pygame.QUIT):
                 return "QUIT"
 
-        r = cmp.scenes.start(window)
+        r = cmp.scenes.start(window, cmp.sprites)
         if (r == "QUIT"):
             return "QUIT"
 
