@@ -3,6 +3,7 @@ import pygame
 def start(window, sprites):
 
     background = sprites.Background()
+    ground = sprites.Ground()
 
     while True:
         # Loop through all events in pygame
@@ -14,6 +15,9 @@ def start(window, sprites):
 
         background.update()
         background.render(window)
+
+        ground.update()
+        ground.render(window)
 
         # Update the screen
         pygame.display.update()
