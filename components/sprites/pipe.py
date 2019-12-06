@@ -40,6 +40,16 @@ class Pipe(pygame.sprite.Sprite):
         if(self.rect.right < 0):
             self.kill()
 
+    def rectHit(self, rect):
+        return (
+            self.rect.colliderect(rect) and
+            (
+                (self.hight - SPACE / 2 > rect.top) or
+                (self.hight + SPACE / 2 < rect.bottom)
+            )
+        )
+
+
     @staticmethod
     def setSpeed(_speed):
         speed = _speed

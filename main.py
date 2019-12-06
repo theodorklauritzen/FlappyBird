@@ -44,5 +44,11 @@ def loop(window):
         if (r == "QUIT"):
             return "QUIT"
 
+        if (r[0] != "GAMEOVER"):
+            raise Excpetion("the play scene should return QUIT or a list with \"GAMEOVER\"")
+
+        print(r)
+
+
 if __name__ == "__main__":
     main()

@@ -15,6 +15,8 @@ def play(window, sprites, s):
     pipeTime = 200 / speed
     frame = 0
 
+    score = 0
+
     while True:
         Clock.tick_busy_loop(60)
         # Loop through all events in pygame
@@ -42,8 +44,19 @@ def play(window, sprites, s):
         ground.draw(window)
 
         bird.sprite.gravity()
+        hit = bird.sprite.hitPipes(pipes.sprites())
         bird.update()
         bird.draw(window)
 
         # Update the screen
         pygame.display.update()
+
+        if hit:
+            return (
+                "GAMEOVER",
+                bird.sprite,
+                background,
+                ground,
+                pipes.sprites(),
+                score
+            )

@@ -96,3 +96,11 @@ class Bird(pygame.sprite.Sprite):
 
     def gravity(self):
         self.vel.y += BIRD_GRAVITY
+
+    def hitPipes(self, pipes):
+        for pipe in pipes:
+            if pipe.rectHit(self.rect):
+                return True
+
+        w, h = pygame.display.get_surface().get_size()
+        return (self.rect.bottom >= h - 90)
