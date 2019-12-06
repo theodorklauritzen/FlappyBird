@@ -8,6 +8,13 @@ def play(window, sprites, s):
     background = s[1]
     ground = s[2]
 
+    pipes = pygame.sprite.Group()
+
+    pipeDistance = 200
+    speed = 2
+    pipeTime = 200 / speed
+    frame = 0
+
     while True:
         Clock.tick_busy_loop(60)
         # Loop through all events in pygame
@@ -20,8 +27,16 @@ def play(window, sprites, s):
             if (event.type == pygame.KEYDOWN):
                 bird.sprite.jump()
 
+        if (frame == 0):
+            pipes.add(sprites.Pipe())
+
+        frame = (frame + 1) % pipeTime
+
         background.update()
         background.draw(window)
+
+        pipes.update()
+        pipes.draw(window)
 
         ground.update()
         ground.draw(window)

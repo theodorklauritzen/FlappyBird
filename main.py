@@ -21,6 +21,8 @@ def main():
 
     loop(window)
 
+    pygame.quit()
+
 def loop(window):
     while True:
 
