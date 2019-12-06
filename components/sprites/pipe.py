@@ -2,11 +2,12 @@ import pygame
 import sys
 import random
 
-SPACE = 150
+SPACE = 400
 PIPE_WIDTH = 65
 PIPE_MARGIN = 60
+POINT_OFFSET = 30
 
-speed = 2
+speed = 10
 
 upperImage = pygame.image.load("{}/resources/images/pipes/{}.png".format(sys.path[0], "pipeUpper"))
 lowerImage = pygame.image.load("{}/resources/images/pipes/{}.png".format(sys.path[0], "pipeLower"))
@@ -52,7 +53,7 @@ class Pipe(pygame.sprite.Sprite):
         )
 
     def getPoint(self, rect):
-        if (rect.left > self.rect.right and not self.counted):
+        if (rect.left + POINT_OFFSET > self.rect.right and not self.counted):
             self.counted = True
             return 1
         return 0

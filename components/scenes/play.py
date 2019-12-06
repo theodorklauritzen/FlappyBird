@@ -11,11 +11,13 @@ def play(window, sprites, s):
     pipes = pygame.sprite.Group()
 
     pipeDistance = 200
-    speed = 2
-    pipeTime = 200 / speed
+    speed = 10
+    pipeTime = pipeDistance / speed
     frame = 0
 
     score = 0
+    w, h = pygame.display.get_surface().get_size()
+    scoreSprite = pygame.sprite.GroupSingle(sprites.Number((w / 2, 50), (w, 50), score))
 
     while True:
         Clock.tick_busy_loop(60)
@@ -45,7 +47,14 @@ def play(window, sprites, s):
 
         bird.sprite.gravity()
         hit = bird.sprite.hitPipes(pipes.sprites())
-        score += bird.sprite.getPoint(pipes.sprites())
+        p = bird.sprite.getPoint(pipes.sprites())
+        if p > 0:
+            score += p
+            scoreSprite.sprite.setNum(score)
+
+        scoreSprite.update()
+        scoreSprite.draw(window)
+
         bird.update()
         bird.draw(window)
 
