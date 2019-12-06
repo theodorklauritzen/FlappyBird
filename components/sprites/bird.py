@@ -4,6 +4,7 @@ import math
 
 BIRD_SCALE = 2.5
 BIRD_GRAVITY = .3
+FLAP_TIME = 80
 
 birdImages = []
 for i in range(3):
@@ -33,9 +34,10 @@ class Bird(pygame.sprite.Sprite):
 
         self.targetXPos = self.pos.x
 
-        self._updateSprite()
-
         self._floatFrame = 0
+        self._flapFrame = 1
+
+        self._updateSprite()
 
     def update(self):
         self.pos.add(self.vel)
@@ -54,10 +56,26 @@ class Bird(pygame.sprite.Sprite):
         self._updateSprite()
 
     def _updateSprite(self):
-        w, h = birdImages[0].get_size()
+        index = 0
+        flapTime = FLAP_TIME / 4
+        if (
+            (self._flapFrame > flapTime and self._flapFrame <= flapTime * 2) or
+            (self._flapFrame > flapTime * 3 and self._flapFrame <= flapTime * 4)
+            ):
+            index = 1
+        elif self._flapFrame > flapTime * 2 and self._flapFrame <= flapTime * 3:
+            index = 2
+
+        self._flapFrame += 1
+        self._flapFrame %= flapTime * 4
+
+
+        img = birdImages[index]
+
+        w, h = img.get_size()
         self.size = (int(w * BIRD_SCALE), int(h * BIRD_SCALE))
 
-        self.image = pygame.transform.scale(birdImages[0], self.size)
+        self.image = pygame.transform.scale(img, self.size)
         angle = math.atan(-self.vel.y * .1)
         self.image = pygame.transform.rotate(self.image, angle / math.pi * 180)
         self.rect = self.image.get_rect()
@@ -73,6 +91,8 @@ class Bird(pygame.sprite.Sprite):
 
     def jump(self):
         self.vel.y = -7
+
+        #self._flapFrame = 1
 
     def gravity(self):
         self.vel.y += BIRD_GRAVITY
