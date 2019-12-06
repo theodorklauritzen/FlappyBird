@@ -1,12 +1,13 @@
 import pygame
 import sys
+import math
 
 BIRD_XPOS = 100
+BIRD_SCALE = 2.5
 
 birdImages = []
 for i in range(3):
     birdImages.append(pygame.image.load("{}/resources/images/bird/{}{}.png".format(sys.path[0], "bird", i)))
-
 
 class Vector:
 
@@ -24,20 +25,33 @@ class Vector:
 class Bird(pygame.sprite.Sprite):
 
 
-    def __init__(self):
+    def __init__(self, pos):
         pygame.sprite.Sprite.__init__(self)
 
-        w, h = pygame.display.get_surface().get_size()
-        self.pos = Vector(BIRD_XPOS, (h - 90) / 2)
+        self.pos = Vector(pos[0], pos[1])
         self.vel = Vector(0, 0)
 
-        self.image = birdImages[0].copy()
-        self.rect = self.image.get_rect()
+        self._updateSprite()
+
+        self._frame = 0
 
     def update(self):
         self.pos.add(self.vel)
 
-        self._updateSpritePos()
+        self._updateSprite()
 
-    def _updateSpritePos(self):
+        self._frame += 1
+        self._frame %= 1200
+
+    def _updateSprite(self):
+        w, h = birdImages[0].get_size()
+        self.size = (int(w * BIRD_SCALE), int(h * BIRD_SCALE))
+
+        self.image = pygame.transform.scale(birdImages[0], self.size)
+        self.rect = self.image.get_rect()
+
         self.rect.center = self.pos.get()
+
+    def float(self):
+        w, h = pygame.display.get_surface().get_size()
+        self.pos.y = (h - 90) / 2 - math.sin(self._frame / 120 * 2 * math.pi) * 30

@@ -6,7 +6,8 @@ def start(window, sprites):
 
     background = sprites.Background()
     ground = sprites.Ground()
-    bird = pygame.sprite.GroupSingle(sprites.Bird())
+    w, h = pygame.display.get_surface().get_size()
+    bird = pygame.sprite.GroupSingle(sprites.Bird((w / 2, (h - 90) / 2)))
 
     while True:
         Clock.tick_busy_loop(60)
@@ -23,6 +24,7 @@ def start(window, sprites):
         ground.update()
         ground.draw(window)
 
+        bird.sprite.float()
         bird.update()
         bird.draw(window)
 
