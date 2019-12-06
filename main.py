@@ -1,5 +1,6 @@
 import pygame
 import components as cmp
+import sys
 
 SCREEN_DIMENSIONS = (500, 700)
 
@@ -14,6 +15,9 @@ def main():
     window = pygame.display.set_mode(SCREEN_DIMENSIONS)
     # Change title and incon of the window
     pygame.display.set_caption("Flappy Bird")
+
+    icon = pygame.image.load("{}/resources/images/bird/{}.png".format(sys.path[0], "bird0"))
+    pygame.display.set_icon(icon)
 
     loop(window)
 
