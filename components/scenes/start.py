@@ -1,6 +1,6 @@
 import pygame
 
-def start(window, sprites):
+def start(window, sprites, s):
 
     Clock = pygame.time.Clock()
 

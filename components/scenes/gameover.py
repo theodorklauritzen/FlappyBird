@@ -23,7 +23,7 @@ def gameover(window, sprites, s):
     gaveoverText.slideFrom((w / 2, -50), 60)
 
     def startBtn():
-        
+        return ("NEW_SCENE", "START")
 
     def rateBtn():
         webbrowser.open(RATE_URL)
@@ -46,7 +46,14 @@ def gameover(window, sprites, s):
 
             if (event.type == pygame.MOUSEBUTTONUP):
                 for btn in buttons.sprites():
-                    btn.mouseClick(pygame.mouse.get_pos())
+                    r = btn.mouseClick(pygame.mouse.get_pos())
+                    if (
+                        (not r is None) and
+                        (type(r) == tuple) and
+                        (len(r) >= 2) and
+                        (r[0] == "NEW_SCENE")
+                        ):
+                        return r[1:]
 
         background.draw(window)
         pipes.draw(window)

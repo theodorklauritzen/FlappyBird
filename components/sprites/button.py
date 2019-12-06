@@ -34,4 +34,4 @@ class Button(pygame.sprite.Sprite):
     def mouseClick(self, pos):
         if (self.rect.collidepoint(pos)):
             if (not self.callback is None):
-                self.callback()
+                return self.callback()

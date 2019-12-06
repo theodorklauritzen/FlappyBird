@@ -24,6 +24,8 @@ def main():
     pygame.quit()
 
 def loop(window):
+    r = ["START"]
+
     while True:
 
         # Loop through all events in pygame
@@ -32,25 +34,17 @@ def loop(window):
         #    # Stop the loop if pygame wants to quit
         #    if (event.type == pygame.QUIT):
         #        return "QUIT"
+        if r[0] == "START":
+            r = cmp.scenes.start(window, cmp.sprites, r[1:])
+        elif r[0] == "PLAY":
+            r = cmp.scenes.play(window, cmp.sprites, r[1:])
+        elif r[0] == "GAMEOVER":
+            r = cmp.scenes.gameover(window, cmp.sprites, r[1:])
+        else:
+            raise Exception("The scene {} is not valid".format(r[0]))
 
-        r = cmp.scenes.start(window, cmp.sprites)
         if (r == "QUIT"):
             return "QUIT"
-
-        if (r[0] != "PLAY"):
-            raise Excpetion("the start scene should return QUIT or a list with \"PLAY\"")
-
-        r = cmp.scenes.play(window, cmp.sprites, r[1:])
-        if (r == "QUIT"):
-            return "QUIT"
-
-        if (r[0] != "GAMEOVER"):
-            raise Excpetion("the play scene should return QUIT or a list with \"GAMEOVER\"")
-
-        r = cmp.scenes.gameover(window, cmp.sprites, r[1:])
-        if (r == "QUIT"):
-            return "QUIT"
-
 
 if __name__ == "__main__":
     main()
