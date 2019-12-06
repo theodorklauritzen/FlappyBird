@@ -1,4 +1,7 @@
 import pygame
+import webbrowser
+
+RATE_URL = "https://github.com/theodorklauritzen"
 
 def gameover(window, sprites, s):
 
@@ -17,7 +20,20 @@ def gameover(window, sprites, s):
     scoreSprite = pygame.sprite.GroupSingle(sprites.Number((w / 2, 270), (w, 50), score))
 
     gaveoverText = sprites.Text("game over", (w / 2, 150), (400, 100))
-    gaveoverText.slideIn((w / 2, -50), 60)
+    gaveoverText.slideFrom((w / 2, -50), 60)
+
+    def startBtn():
+        
+
+    def rateBtn():
+        webbrowser.open(RATE_URL)
+
+    buttons = pygame.sprite.Group()
+    centerOff = 50
+    yPos = 350
+    size = (80, 40)
+    buttons.add(sprites.Button("start", (w / 2 - centerOff, yPos), size, startBtn))
+    buttons.add(sprites.Button("rate", (w / 2 + centerOff, yPos), size, rateBtn))
 
     while True:
         Clock.tick_busy_loop(60)
@@ -28,11 +44,16 @@ def gameover(window, sprites, s):
             if (event.type == pygame.QUIT):
                 return "QUIT"
 
+            if (event.type == pygame.MOUSEBUTTONUP):
+                for btn in buttons.sprites():
+                    btn.mouseClick(pygame.mouse.get_pos())
+
         background.draw(window)
         pipes.draw(window)
         ground.draw(window)
         gaveoverText.update()
         gaveoverText.draw(window)
+        buttons.draw(window)
         scoreSprite.draw(window)
         bird.draw(window)
 

@@ -4,3 +4,4 @@ from .bird import Bird
 from .pipe import Pipe
 from .text import Text
 from .number import Number
+from .button import Button

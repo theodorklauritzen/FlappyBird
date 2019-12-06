@@ -44,6 +44,6 @@ class Text:
         size = self.image.get_size()
         window.blit(self.image, (self.pos[0] - size[0] / 2, self.pos[1] - size[1] / 2))
 
-    def slideIn(self, pos, time):
+    def slideFrom(self, pos, time):
         self.pos = pos
         self._timeLeft = time
