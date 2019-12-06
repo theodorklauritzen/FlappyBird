@@ -23,6 +23,16 @@ def start(window, sprites):
             if (event.type == pygame.QUIT):
                 return "QUIT"
 
+            if (event.type == pygame.MOUSEBUTTONUP or event.type == pygame.KEYDOWN):
+                bird.sprite.jump()
+
+                return (
+                    "PLAY",
+                    bird.sprite,
+                    background,
+                    ground
+                )
+
         background.update()
         background.draw(window)
 

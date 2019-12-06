@@ -35,5 +35,12 @@ def loop(window):
         if (r == "QUIT"):
             return "QUIT"
 
+        if (r[0] != "PLAY"):
+            raise Excpetion("the start scene should return QUIT or a list with \"PLAY\"")
+
+        r = cmp.scenes.play(window, cmp.sprites, r[1:])
+        if (r == "QUIT"):
+            return "QUIT"
+
 if __name__ == "__main__":
     main()
