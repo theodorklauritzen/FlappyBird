@@ -13,6 +13,7 @@ def start(window, sprites):
 
     flappyText = sprites.Text("flappy bird", (w / 2, 150), (400, 100))
     tapText = sprites.Text("tap", (w / 2, 450), (200, 100))
+    authorText = sprites.Text("Theodor 2G", (w / 2 + 130, 205), (100, 30))
 
     while True:
         Clock.tick_busy_loop(60)
@@ -42,6 +43,7 @@ def start(window, sprites):
 
         flappyText.draw(window)
         tapText.draw(window)
+        authorText.draw(window)
 
         bird.sprite.float()
         bird.update()

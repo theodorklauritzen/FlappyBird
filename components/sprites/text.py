@@ -4,7 +4,8 @@ import sys
 fileMap = {
     "flappy bird": "flappyBird",
     "tap": "tap",
-    "game over": "gameover"
+    "game over": "gameover",
+    "Theodor 2G": "Theodor2G"
 }
 
 class Text:
