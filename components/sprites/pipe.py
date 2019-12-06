@@ -34,6 +34,8 @@ class Pipe(pygame.sprite.Sprite):
         lImg = pygame.transform.scale(lowerImage, (int(lImgSize[0] * imgScale), int(lImgSize[1] * imgScale)))
         self.image.blit(lImg, (0, self.hight + SPACE / 2))
 
+        self.counted = False
+
     def update(self):
         self.rect.topleft = (self.rect.x - speed, 0)
 
@@ -48,6 +50,13 @@ class Pipe(pygame.sprite.Sprite):
                 (self.hight + SPACE / 2 < rect.bottom)
             )
         )
+
+    def getPoint(self, rect):
+        if (rect.left > self.rect.right and not self.counted):
+            self.counted = True
+            return 1
+        return 0
+
 
 
     @staticmethod

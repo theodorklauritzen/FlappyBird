@@ -45,6 +45,7 @@ def play(window, sprites, s):
 
         bird.sprite.gravity()
         hit = bird.sprite.hitPipes(pipes.sprites())
+        score += bird.sprite.getPoint(pipes.sprites())
         bird.update()
         bird.draw(window)
 

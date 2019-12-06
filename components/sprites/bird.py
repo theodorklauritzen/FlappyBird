@@ -104,3 +104,9 @@ class Bird(pygame.sprite.Sprite):
 
         w, h = pygame.display.get_surface().get_size()
         return (self.rect.bottom >= h - 90)
+
+    def getPoint(self, pipes):
+        ret = 0
+        for pipe in pipes:
+            ret += pipe.getPoint(self.rect)
+        return ret
