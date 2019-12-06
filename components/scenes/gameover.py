@@ -23,7 +23,16 @@ def gameover(window, sprites, s):
     gaveoverText.slideFrom((w / 2, -50), 60)
 
     def startBtn():
-        return ("NEW_SCENE", "START")
+        b = sprites.Bird((-20, (h - 90) / 2))
+        b.targetXPos = 80
+
+        return (
+            "NEW_SCENE",
+            "PLAY",
+            b,
+            background,
+            ground
+        )
 
     def rateBtn():
         webbrowser.open(RATE_URL)
