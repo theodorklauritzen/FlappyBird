@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-SPEED = .07
+SPEED = .3
 
 class Background:
 
