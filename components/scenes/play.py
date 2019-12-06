@@ -11,7 +11,7 @@ def play(window, sprites, s):
     pipes = pygame.sprite.Group()
 
     pipeDistance = 200
-    speed = 10
+    speed = 2
     pipeTime = pipeDistance / speed
     frame = 0
 
