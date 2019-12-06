@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-SPEED = 2
+SPEED = 3
 GROUND_HIGHT = 90
 
 class Ground:

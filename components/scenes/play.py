@@ -10,9 +10,9 @@ def play(window, sprites, s):
 
     pipes = pygame.sprite.Group()
 
-    pipeDistance = 200
-    speed = 2
-    pipeTime = pipeDistance / speed
+    pipeDistance = 230
+    speed = 3
+    pipeTime = int(pipeDistance / speed)
     frame = 0
 
     score = 0

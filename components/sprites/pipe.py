@@ -7,7 +7,7 @@ PIPE_WIDTH = 65
 PIPE_MARGIN = 60
 POINT_OFFSET = 30
 
-speed = 2
+speed = 3
 
 upperImage = pygame.image.load("{}/resources/images/pipes/{}.png".format(sys.path[0], "pipeUpper"))
 lowerImage = pygame.image.load("{}/resources/images/pipes/{}.png".format(sys.path[0], "pipeLower"))

@@ -64,6 +64,10 @@ def gameover(window, sprites, s):
                         ):
                         return r[1:]
 
+            if (event.type == pygame.KEYUP):
+                if (pygame.K_SPACE):
+                    return startBtn()[1:]
+
         background.draw(window)
         pipes.draw(window)
         ground.draw(window)
