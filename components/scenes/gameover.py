@@ -16,6 +16,7 @@ def gameover(window, sprites, s):
         pipes.add(i)
 
     score = s[4]
+    print("SCORE: {}".format(score))
     w, h = pygame.display.get_surface().get_size()
     scoreSprite = pygame.sprite.GroupSingle(sprites.Number((w / 2, 270), (w, 50), score))
 
