@@ -2,7 +2,6 @@ import pygame
 import sys
 import math
 
-BIRD_XPOS = 100
 BIRD_SCALE = 2.5
 BIRD_GRAVITY = .3
 
@@ -32,12 +31,25 @@ class Bird(pygame.sprite.Sprite):
         self.pos = Vector(pos[0], pos[1])
         self.vel = Vector(0, 0)
 
+        self.targetXPos = self.pos.x
+
         self._updateSprite()
 
         self._floatFrame = 0
 
     def update(self):
         self.pos.add(self.vel)
+
+        speedX = 1.5
+        if(self.pos.x < self.targetXPos):
+            self.pos.x += speedX
+            if (self.pos.x > self.targetXPos):
+                self.pos.x = self.targetXPos
+        if(self.pos.x > self.targetXPos):
+            self.pos.x -= speedX
+            if (self.pos.x < self.targetXPos):
+                self.pos.x = self.targetXPos
+
 
         self._updateSprite()
 

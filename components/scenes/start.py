@@ -24,6 +24,7 @@ def start(window, sprites):
                 return "QUIT"
 
             if (event.type == pygame.MOUSEBUTTONUP or event.type == pygame.KEYDOWN):
+                bird.sprite.targetXPos = 80
                 bird.sprite.jump()
 
                 return (
