@@ -20,7 +20,7 @@ class Ground:
         w, h = pygame.display.get_surface().get_size()
         self.offsetX = (self.offsetX + SPEED) % w
 
-    def render(self, window):
+    def draw(self, window):
         w, h = pygame.display.get_surface().get_size()
         window.blit(self.image, (w - self.offsetX, h - self.hight))
         window.blit(self.image, (-self.offsetX, h - self.hight))

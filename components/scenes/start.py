@@ -18,10 +18,10 @@ def start(window, sprites):
                 return "QUIT"
 
         background.update()
-        background.render(window)
+        background.draw(window)
 
         ground.update()
-        ground.render(window)
+        ground.draw(window)
 
         bird.update()
         bird.draw(window)
