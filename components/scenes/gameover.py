@@ -45,6 +45,8 @@ def gameover(window, sprites, s):
     buttons.add(sprites.Button("start", (w / 2 - centerOff, yPos), size, startBtn))
     buttons.add(sprites.Button("rate", (w / 2 + centerOff, yPos), size, rateBtn))
 
+    startTime = pygame.time.get_ticks()
+
     while True:
         Clock.tick_busy_loop(60)
         # Loop through all events in pygame
@@ -66,7 +68,7 @@ def gameover(window, sprites, s):
                         return r[1:]
 
             if (event.type == pygame.KEYUP):
-                if (pygame.K_SPACE):
+                if (pygame.K_SPACE and pygame.time.get_ticks() > 500 + startTime):
                     return startBtn()[1:]
 
         background.draw(window)
