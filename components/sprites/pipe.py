@@ -45,7 +45,9 @@ class Pipe(pygame.sprite.Sprite):
 
     def rectHit(self, rect):
         return (
-            self.rect.colliderect(rect) and
+            #self.rect.colliderect(rect) and
+            (self.rect.left < rect.right) and
+            (self.rect.right > rect.left) and
             (
                 (self.hight - SPACE / 2 > rect.top) or
                 (self.hight + SPACE / 2 < rect.bottom)
