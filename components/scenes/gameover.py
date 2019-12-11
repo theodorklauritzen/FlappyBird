@@ -1,7 +1,7 @@
 import pygame
 import webbrowser
 
-RATE_URL = "https://github.com/theodorklauritzen"
+RATE_URL = "https://github.com/theodorklauritzen/FlappyBird"
 
 def gameover(window, sprites, s):
 
