@@ -59,6 +59,11 @@ def play(window, sprites, s):
 
         # Apply gravity to the bird
         bird.sprite.gravity()
+
+        # Update and draw the bird
+        bird.update()
+        bird.draw(window)
+        
         # Check ig the bird has hit a pipe
         hit = bird.sprite.hitPipes(pipes.sprites())
         # Check if the score should increment
@@ -72,10 +77,6 @@ def play(window, sprites, s):
         # Update and draw the number sprite
         scoreSprite.update()
         scoreSprite.draw(window)
-
-        # Update and draw the bird
-        bird.update()
-        bird.draw(window)
 
         # Update the screen
         pygame.display.update()
