@@ -59,6 +59,27 @@ class Pipe(pygame.sprite.Sprite):
         if(self.rect.right < 0):
             self.kill()
 
+    def birdCollide(self, bird):
+        birdR = 20
+
+        return (
+            (
+                (self.rect.left < bird.pos.x) and
+                (self.rect.right > bird.pos.x) and
+                (
+                    (self.hight - SPACE / 2 > bird.pos.y - birdR) or
+                    (self.hight + SPACE / 2 < bird.pos.y + birdR)
+                )
+            ) or (
+                (self.rect.left < bird.pos.x + birdR) and
+                (self.rect.right > bird.pos.x - birdR) and
+                (
+                    (self.hight - SPACE / 2 > bird.pos.y) or
+                    (self.hight + SPACE / 2 < bird.pos.y)
+                )
+            )
+        )
+
     # Check if a rect collides with the pipe
     def rectHit(self, rect):
         # Return true if the rect is colliding with the pipe

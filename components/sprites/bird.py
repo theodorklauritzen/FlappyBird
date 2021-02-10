@@ -127,7 +127,7 @@ class Bird(pygame.sprite.Sprite):
     def hitPipes(self, pipes):
         for pipe in pipes:
             # Check if the bird hits the current pipe
-            if pipe.rectHit(self.rect):
+            if pipe.birdCollide(self):
                 # Return true if the bird hit the pipe
                 return True
 
